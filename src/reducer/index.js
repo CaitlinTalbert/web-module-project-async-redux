@@ -1,5 +1,4 @@
-import data from '../data/guildwars';
-import { FETCH_START } from '../actions/index'; 
+import { FETCH_START, FETCH_SUCCESS } from '../actions/index'; 
 
 const initialState = {
     specialization: [], 
@@ -13,6 +12,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state, 
                 loading: true, 
+                error: ""
+            }
+        case FETCH_SUCCESS: 
+            return { 
+                ...state, 
+                loading: false, 
+                specialization: action.payload, 
                 error: ""
             }
         default: 
